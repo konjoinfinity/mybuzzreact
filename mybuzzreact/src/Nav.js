@@ -72,11 +72,11 @@ class Nav extends Component {
                 </nav>
 
                 <ul className="sidenav navside" id="mobile-nav">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/logout">Logout</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/signup">Signup</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/" className="sidenav-close">Home</Link></li>
+                    <li><Link to="/logout" className="sidenav-close">Logout</Link></li>
+                    <li><Link to="/login" className="sidenav-close">Login</Link></li>
+                    <li><Link to="/signup" className="sidenav-close">Signup</Link></li>
+                    <li><Link to="/about" className="sidenav-close">About</Link></li>
                 </ul>
 
                 {/* <ul className="sidenav" id="mobile-nav">
