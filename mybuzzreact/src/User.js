@@ -86,6 +86,7 @@ class User extends Component {
             }
             )
             )
+        console.log(this.state)
         return (
             <div>
                 <div className="container-card">
