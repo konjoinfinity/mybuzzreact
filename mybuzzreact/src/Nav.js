@@ -15,15 +15,11 @@ class Nav extends Component {
                             <i className="material-icons">menu</i>
                         </a>
                         <ul className="left hide-on-med-and-down">
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/about">About</Link>
-                            </li>
-                            <li>
-                                <Link to="/logout">Logout</Link>
-                            </li>
+                            <li><Link to="/" className="sidenav-close">Home</Link></li>
+                            <li><Link to="/logout" className="sidenav-close">Logout</Link></li>
+                            <li><Link to="/login" className="sidenav-close">Login</Link></li>
+                            <li><Link to="/signup" className="sidenav-close">Signup</Link></li>
+                            <li><Link to="/about" className="sidenav-close">About</Link></li>
                         </ul>
                         {/* {this.props.isLoggedIn === true && (
                 <li>
