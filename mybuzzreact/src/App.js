@@ -5,6 +5,9 @@ import './App.css';
 import Nav from "./Nav";
 import Home from "./Home"
 import User from "./User"
+import Signup from './Signup';
+import Login from './Login';
+import About from './About';
 
 function App() {
   return (
@@ -19,6 +22,30 @@ function App() {
               <Home {...props} />
             )}
           />
+          <Route
+            path="/login"
+            exact
+            render={props => (
+              <Login
+                {...props}
+              />
+            )} />
+          <Route
+            path="/signup"
+            exact
+            render={props => (
+              <Signup
+                {...props}
+              />
+            )} />
+          <Route
+            path="/about"
+            exact
+            render={props => (
+              <About
+                {...props}
+              />
+            )} />
           <Route
             path="/user/:id"
             exact
