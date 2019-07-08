@@ -8,7 +8,10 @@ class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: ""
+            user: "",
+            buzzes: "",
+            oldbuzzes: "",
+            timeSince: ""
         };
     }
 
@@ -16,10 +19,17 @@ class User extends Component {
         axios
             .get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
-                this.setState({ user: res.data });
+                this.setState({
+                    user: res.data,
+                    buzzes: res.data.buzzes,
+                    oldbuzzes: res.data.oldbuzzes,
+                    timeSince: res.data.timeSince
+                })
                 console.log(res.data)
+                console.log(res.data.oldbuzzes)
             })
             .catch(err => console.log(err));
+        console.log(this.state)
     }
 
     addDrink(drink) {
@@ -38,12 +48,15 @@ class User extends Component {
         console.log("Buzz ID: " + buzzid)
     }
 
+    deleteAllOldBuzzes() {
+        console.log("Delete all OLD buzzes")
+    }
+
 
     render() {
         let buzzes;
         this.state.user.buzzes &&
             (buzzes = this.state.user.buzzes.map((buzz, id) => {
-                var buzzid = buzz._id
                 return (
                     <div className="divcard teal lighten-5" key={id}>
                         <h6 style={{ fontWeight: "bold" }}>{buzz.numberOfDrinks} - {buzz.drinkType}</h6>
@@ -51,7 +64,23 @@ class User extends Component {
                             maxWidth: "170px",
                             wordWrap: "break-word"
                         }}><Timestamp date={buzz.dateCreated} options={{ includeDay: true, twentyFourHour: true }} /></p>
-                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteBuzz(buzzid)}>Delete<i className="material-icons right">delete</i></button>
+                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteBuzz(buzz._id)}>Delete<i className="material-icons right">delete</i></button>
+                    </div>
+                )
+            }
+            )
+            )
+        let oldbuzzes;
+        this.state.user.oldbuzzes &&
+            (oldbuzzes = this.state.user.oldbuzzes.map((oldbuzz, id) => {
+                return (
+                    <div className="divcard teal lighten-5" key={id}>
+                        <h6 style={{ fontWeight: "bold" }}>{oldbuzz.numberOfDrinks} - {oldbuzz.drinkType}</h6>
+                        <p style={{
+                            maxWidth: "170px",
+                            wordWrap: "break-word"
+                        }}><Timestamp date={oldbuzz.dateCreated} options={{ includeDay: true, twentyFourHour: true }} /></p>
+                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteBuzz(oldbuzz._id)}>Delete<i className="material-icons right">delete</i></button>
                     </div>
                 )
             }
@@ -98,14 +127,40 @@ class User extends Component {
                         <button style={{ margin: "5px" }} className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.addDrink("Liquor")}>+1 Liquor<i className="fas fa-glass-whiskey right"></i></button>
                     </div>
                 </div>
-
-                {this.state.user.buzzes && (
+                {this.state.buzzes !== "" &&
                     <div className="divcard teal lighten-4">
                         <h5>Current Buzz &nbsp;<i className="fas fa-beer"></i> &nbsp;<i className="fas fa-wine-glass-alt"></i> &nbsp;<i className="fas fa-glass-whiskey"></i></h5>
                         <button className="btn waves-effect waves-light teal darken-1" onClick={() => this.deleteAllBuzzes()} type="submit">Delete All<i className="material-icons right">delete</i></button>
+                    </div>}
+                {this.state.buzzes === "" && (
+                    this.state.timeSince !== "" &&
+                    <div className="divcard teal lighten-4">
+                        <h5 style={{ textAlign: "center" }}>Current Buzz</h5>
+                        <h6>Congrats, keep up</h6>
+                        <h6>the good work!</h6>
+                        <h6>It's been:</h6>
+                        <h6 style={{ fontWeight: "bold" }}>{this.state.user.timeSince}</h6>
+                        <h6>since your last drink.</h6>
+                    </div>)}
+                {this.state.buzzes === "" && (
+                    this.state.timeSince !== "" &&
+                    <div className="divcard teal lighten-4">
+                        <h5 style={{ textAlign: "center" }}>Current Buzz</h5>
+                        <h6>Congrats, keep up</h6>
+                        <h6>the good work!</h6>
+                        <h6 style={{ fontWeight: "bold" }}>You haven't had</h6>
+                        <h6 style={{ fontWeight: "bold" }}>any drinks.</h6>
                     </div>)}
                 <div className="container-card">
                     {buzzes}
+                </div>
+                {this.state.user.buzzes &&
+                    <div className="divcard teal lighten-4">
+                        <h5 style={{ textAlign: "center" }}>Old Buzzes &nbsp;<i className="fas fa-beer"></i> &nbsp;<i className="fas fa-wine-glass-alt"></i> &nbsp;<i className="fas fa-glass-whiskey"></i></h5>
+                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteAllOldBuzzes()}>Delete All<i className="material-icons right">delete</i></button>
+                    </div>}
+                <div className="container-card">
+                    {oldbuzzes}
                 </div>
             </div>
         )
