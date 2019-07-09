@@ -22,111 +22,65 @@ class User extends Component {
     componentDidMount() {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
-                this.setState({
-                    user: res.data
-                })
-                console.log(res.data)
-            })
-            .catch(err => console.log(err));
-        console.log(this.state)
+                this.setState({ user: res.data })
+            }).catch(err => console.log(err));
     }
 
     getUser() {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
-                this.setState({
-                    user: res.data
-                })
-                console.log(res.data)
-            })
-            .catch(err => console.log(err));
-        console.log(this.state)
+                this.setState({ user: res.data })
+            }).catch(err => console.log(err));
     }
 
     addDrink(drink) {
-        console.log("Add 1: " + drink)
         axios.post(devProdUrl + `user/${this.props.match.params.id}`, {
             drinkType: drink
         }).then(res => {
-            this.setState({
-                user: res.data
-            })
-            console.log(res.data)
-        })
-            .catch(err => console.log(err));
-        console.log(this.state)
+            this.setState({ user: res.data })
+        }).catch(err => console.log(err));
     }
 
     checkBac() {
-        console.log("Check current BAC")
         axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`)
             .then(res => {
-                this.setState({
-                    user: res.data
-                })
-                console.log(res.data)
-            })
-            .catch(err => console.log(err));
-        console.log(this.state)
+                this.setState({ user: res.data })
+            }).catch(err => console.log(err));
     }
 
     deleteBuzz(buzzid) {
-        console.log("Buzz ID: " + buzzid)
         axios.put(devProdUrl + `user/${this.props.match.params.id}/del`, {
             index: buzzid
         }).then(res => {
-            this.setState({
-                user: res.data
-            })
+            this.setState({ user: res.data })
             this.getUser();
-            console.log(res.data)
-        })
-            .catch(err => console.log(err));
-        console.log(this.state)
+        }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteOldBuzz(buzzid) {
-        console.log("Old Buzz ID: " + buzzid)
         axios.put(devProdUrl + `user/${this.props.match.params.id}/olddel`, {
             index: buzzid
         }).then(res => {
-            this.setState({
-                user: res.data
-            })
+            this.setState({ user: res.data })
             this.getUser();
-            console.log(res.data)
-        })
-            .catch(err => console.log(err));
-        console.log(this.state)
+        }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteAllBuzzes() {
-        console.log("Delete all buzzes")
         axios.put(devProdUrl + `user/${this.props.match.params.id}/delall`).then(res => {
-            this.setState({
-                user: res.data
-            })
+            this.setState({ user: res.data })
             this.getUser();
-            console.log(res.data)
-        })
-            .catch(err => console.log(err));
-        console.log(this.state)
+        }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteAllOldBuzzes() {
-        console.log("Delete all Old buzzes")
         axios.put(devProdUrl + `user/${this.props.match.params.id}/olddelall`).then(res => {
-            this.setState({
-                user: res.data
-            })
+            this.setState({ user: res.data })
             this.getUser();
-            console.log(res.data)
-        })
-            .catch(err => console.log(err));
-        console.log(this.state)
+        }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
@@ -176,7 +130,6 @@ class User extends Component {
             }
             )
             )
-        console.log(this.state)
         return (
             <div>
                 <div className="container-card">
