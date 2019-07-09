@@ -10,6 +10,7 @@ class User extends Component {
         this.state = {
             user: ""
         };
+
     }
 
     componentDidMount() {
@@ -28,13 +29,12 @@ class User extends Component {
         console.log("Add 1: " + drink)
         axios.post(devProdUrl + `user/${this.props.match.params.id}`, {
             drinkType: drink
-        })
-            .then(res => {
-                this.setState({
-                    user: res.data
-                })
-                console.log(res.data)
+        }).then(res => {
+            this.setState({
+                user: res.data
             })
+            console.log(res.data)
+        })
             .catch(err => console.log(err));
         console.log(this.state)
     }
@@ -52,16 +52,31 @@ class User extends Component {
         console.log(this.state)
     }
 
+    deleteBuzz(buzzid) {
+        console.log("Buzz ID: " + buzzid)
+        axios.put(devProdUrl + `user/${this.props.match.params.id}/del`, {
+            index: buzzid
+        }).then(res => {
+            this.setState({
+                user: res.data
+            })
+            console.log(res.data)
+        })
+            .catch(err => console.log(err));
+        console.log(this.state)
+        this.props.history.push(`/user/${this.props.match.params.id}`);
+    }
+
+    deleteOldBuzz(buzzid) {
+        console.log("Old Buzz ID: " + buzzid)
+    }
+
     deleteAllBuzzes() {
         console.log("Delete all buzzes")
     }
 
-    deleteBuzz(buzzid) {
-        console.log("Buzz ID: " + buzzid)
-    }
-
     deleteAllOldBuzzes() {
-        console.log("Delete all OLD buzzes")
+        console.log("Delete all Old buzzes")
     }
 
 
@@ -104,7 +119,7 @@ class User extends Component {
                             maxWidth: "170px",
                             wordWrap: "break-word"
                         }}><Timestamp date={oldbuzz.dateCreated} options={{ includeDay: true, twentyFourHour: true }} /></p>
-                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteBuzz(oldbuzz._id)}>Delete<i className="material-icons right">delete</i></button>
+                        <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteOldBuzz(oldbuzz._id)}>Delete<i className="material-icons right">delete</i></button>
                     </div>
                 )
             }
