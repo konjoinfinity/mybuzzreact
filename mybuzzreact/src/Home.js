@@ -13,17 +13,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        axios
-            .get(devProdUrl)
+        axios.get(devProdUrl)
             .then(res => {
                 this.setState({ users: res.data });
-            })
-            .catch(err => console.log(err));
+            }).catch(err => console.log(err));
     }
 
     render() {
         let userlist;
-        console.log(this.state.users)
         this.state.users !== "" && (
             userlist = this.state.users.map((user, id) => {
                 return (
