@@ -26,6 +26,17 @@ class User extends Component {
 
     addDrink(drink) {
         console.log("Add 1: " + drink)
+        axios.post(devProdUrl + `user/${this.props.match.params.id}`, {
+            drinkType: drink
+        })
+            .then(res => {
+                this.setState({
+                    user: res.data
+                })
+                console.log(res.data)
+            })
+            .catch(err => console.log(err));
+        console.log(this.state)
     }
 
     checkBac() {
