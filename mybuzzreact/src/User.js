@@ -8,10 +8,7 @@ class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: "",
-            buzzes: "",
-            oldbuzzes: "",
-            timeSince: ""
+            user: ""
         };
     }
 
@@ -33,6 +30,15 @@ class User extends Component {
 
     checkBac() {
         console.log("Check current BAC")
+        axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`)
+            .then(res => {
+                this.setState({
+                    user: res.data
+                })
+                console.log(res.data)
+            })
+            .catch(err => console.log(err));
+        console.log(this.state)
     }
 
     deleteAllBuzzes() {
