@@ -16,17 +16,12 @@ class User extends Component {
     }
 
     componentDidMount() {
-        axios
-            .get(devProdUrl + `user/${this.props.match.params.id}`)
+        axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
-                    user: res.data,
-                    buzzes: res.data.buzzes,
-                    oldbuzzes: res.data.oldbuzzes,
-                    timeSince: res.data.timeSince
+                    user: res.data
                 })
                 console.log(res.data)
-                console.log(res.data.oldbuzzes)
             })
             .catch(err => console.log(err));
         console.log(this.state)
@@ -60,6 +55,12 @@ class User extends Component {
                 return (
                     <div className="divcard teal lighten-5" key={id}>
                         <h6 style={{ fontWeight: "bold" }}>{buzz.numberOfDrinks} - {buzz.drinkType}</h6>
+                        {buzz.drinkType === "Beer" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="beer">🍺</span></h5>}
+                        {buzz.drinkType === "Wine" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="wine">🍷</span></h5>}
+                        {buzz.drinkType === "Liquor" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="liquor">🥃</span></h5>}
                         <p style={{
                             maxWidth: "170px",
                             wordWrap: "break-word"
@@ -76,6 +77,12 @@ class User extends Component {
                 return (
                     <div className="divcard teal lighten-5" key={id}>
                         <h6 style={{ fontWeight: "bold" }}>{oldbuzz.numberOfDrinks} - {oldbuzz.drinkType}</h6>
+                        {oldbuzz.drinkType === "Beer" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="beer">🍺</span></h5>}
+                        {oldbuzz.drinkType === "Wine" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="wine">🍷</span></h5>}
+                        {oldbuzz.drinkType === "Liquor" &&
+                            <h5 style={{ fontWeight: "bold" }}><span role="img" aria-label="liquor">🥃</span></h5>}
                         <p style={{
                             maxWidth: "170px",
                             wordWrap: "break-word"
