@@ -104,10 +104,30 @@ class User extends Component {
 
     deleteAllBuzzes() {
         console.log("Delete all buzzes")
+        axios.put(devProdUrl + `user/${this.props.match.params.id}/delall`).then(res => {
+            this.setState({
+                user: res.data
+            })
+            this.getUser();
+            console.log(res.data)
+        })
+            .catch(err => console.log(err));
+        console.log(this.state)
+        this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteAllOldBuzzes() {
         console.log("Delete all Old buzzes")
+        axios.put(devProdUrl + `user/${this.props.match.params.id}/olddelall`).then(res => {
+            this.setState({
+                user: res.data
+            })
+            this.getUser();
+            console.log(res.data)
+        })
+            .catch(err => console.log(err));
+        console.log(this.state)
+        this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
 
