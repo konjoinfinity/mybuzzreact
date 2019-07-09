@@ -10,10 +10,28 @@ class User extends Component {
         this.state = {
             user: ""
         };
-
+        this.getUser = this.getUser.bind(this);
+        this.addDrink = this.addDrink.bind(this);
+        this.checkBac = this.checkBac.bind(this);
+        this.deleteBuzz = this.deleteBuzz.bind(this);
+        this.deleteOldBuzz = this.deleteOldBuzz.bind(this);
+        this.deleteAllBuzzes = this.deleteAllBuzzes.bind(this);
+        this.deleteAllOldBuzzes = this.deleteAllOldBuzzes.bind(this);
     }
 
     componentDidMount() {
+        axios.get(devProdUrl + `user/${this.props.match.params.id}`)
+            .then(res => {
+                this.setState({
+                    user: res.data
+                })
+                console.log(res.data)
+            })
+            .catch(err => console.log(err));
+        console.log(this.state)
+    }
+
+    getUser() {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
@@ -60,6 +78,7 @@ class User extends Component {
             this.setState({
                 user: res.data
             })
+            this.getUser();
             console.log(res.data)
         })
             .catch(err => console.log(err));
