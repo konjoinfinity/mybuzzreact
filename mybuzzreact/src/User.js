@@ -24,7 +24,6 @@ class User extends Component {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({ user: res.data })
-                console.log(res.data)
             }).catch(err => console.log(err));
     }
 
@@ -32,7 +31,6 @@ class User extends Component {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({ user: res.data })
-                console.log(res.data)
             }).catch(err => console.log(err));
     }
 
@@ -41,7 +39,6 @@ class User extends Component {
             drinkType: drink
         }).then(res => {
             this.setState({ user: res.data })
-            console.log(res.data)
         }).catch(err => console.log(err));
     }
 
@@ -49,7 +46,6 @@ class User extends Component {
         axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`)
             .then(res => {
                 this.setState({ user: res.data })
-                console.log(res.data)
             }).catch(err => console.log(err));
     }
 
@@ -134,10 +130,6 @@ class User extends Component {
             }
             )
             )
-        console.log(!this.state.user.buzzes === null)
-        console.log(this.state.user.buzzes)
-        console.log(Array.isArray(this.state.user.buzzes))
-        console.log(_.isEmpty(this.state.user.buzzes))
         return (
             <div>
                 <div className="container-card">
