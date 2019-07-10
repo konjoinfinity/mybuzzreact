@@ -204,11 +204,11 @@ class User extends Component {
                 <div className="container-card">
                     {buzzes}
                 </div>
-                {this.state.user.buzzes &&
+                {this.state.user.oldbuzzes && this.state.user.oldbuzzes.length > 0 && (
                     <div className="divcard teal lighten-4">
                         <h5 style={{ textAlign: "center" }}>Old Buzzes &nbsp;<i className="fas fa-beer"></i> &nbsp;<i className="fas fa-wine-glass-alt"></i> &nbsp;<i className="fas fa-glass-whiskey"></i></h5>
                         <button className="btn waves-effect waves-light teal darken-1" type="submit" onClick={() => this.deleteAllOldBuzzes()}>Delete All<i className="material-icons right">delete</i></button>
-                    </div>}
+                    </div>)}
                 <div className="container-card">
                     {oldbuzzes}
                 </div>
