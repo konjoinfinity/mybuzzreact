@@ -23,6 +23,7 @@ class User extends Component {
         axios.get(devProdUrl + `user/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({ user: res.data })
+                console.log(res.data)
             }).catch(err => console.log(err));
     }
 
@@ -45,6 +46,7 @@ class User extends Component {
         axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`)
             .then(res => {
                 this.setState({ user: res.data })
+                console.log(res.data)
             }).catch(err => console.log(err));
     }
 
@@ -158,7 +160,7 @@ class User extends Component {
                             <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "white", color: "teal" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
-                        {this.state.user.bac === 0 && (
+                        {(this.state.user.bac === 0 || this.state.user.bac === undefined) && (
                             <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "white", color: "teal" }}>
                                 <h6 style={{ fontWeight: "bold" }}>0.0</h6>
                             </div>)}
