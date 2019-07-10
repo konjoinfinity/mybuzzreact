@@ -8,6 +8,7 @@ import User from "./User"
 import Signup from './Signup';
 import Login from './Login';
 import About from './About';
+import devProdUrl from './Urls';
 
 class App extends Component {
   constructor(props) {
@@ -61,10 +62,12 @@ class App extends Component {
   handleSignUp(e) {
     e.preventDefault();
     axios
-      .post(backendUrl + "users/signup", {
+      .post(devProdUrl + "signup", {
         email: this.state.email,
         password: this.state.password,
-        confirmpass: this.state.confirmpass
+        confirmpassword: this.state.confirmpassword,
+        gender: this.state.gender,
+        weight: this.state.gender
       })
       .then(response => {
         if (response.data.error) {
@@ -83,11 +86,10 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault();
-    axios
-      .post(backendUrl + "users/login", {
-        email: this.state.email,
-        password: this.state.password
-      })
+    axios.post(devProdUrl + "login", {
+      email: this.state.email,
+      password: this.state.password
+    })
       .then(response => {
         if (response.data.error) {
           console.log(response.data.error);
