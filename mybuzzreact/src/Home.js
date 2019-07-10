@@ -27,7 +27,7 @@ class Home extends Component {
                     <div className="card" key={id}>
                         <div className="card-body">
                             <div className="card-content">
-                                <h6>{user.username} - {user.gender}</h6>
+                                <h6>{user.email} - {user.gender}</h6>
                                 <h6><Link to={"/user/" + user._id}>Show</Link></h6>
                             </div>
                         </div>

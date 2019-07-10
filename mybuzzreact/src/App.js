@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import './App.css';
@@ -9,12 +9,12 @@ import Signup from './Signup';
 import Login from './Login';
 import About from './About';
 import devProdUrl from './Urls';
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      communities: "",
       email: "",
       password: "",
       confirmpass: "",
@@ -36,6 +36,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: false
       });
+      this.props.history.push("/login");
     }
   }
 
@@ -120,20 +121,30 @@ class App extends Component {
             />
             <Route
               path="/login"
-              exact
-              render={props => (
-                <Login
-                  {...props}
-                />
-              )} />
+              render={props => {
+                return (
+                  <Login
+                    {...props}
+                    isLoggedIn={this.state.isLoggedIn}
+                    handleInput={this.handleInput}
+                    handleLogIn={this.handleLogIn}
+                    error={this.state.error}
+                  />
+                );
+              }} />
             <Route
               path="/signup"
-              exact
-              render={props => (
-                <Signup
-                  {...props}
-                />
-              )} />
+              render={props => {
+                return (
+                  <Signup
+                    {...props}
+                    isLoggedIn={this.state.isLoggedIn}
+                    handleInput={this.handleInput}
+                    handleSignUp={this.handleSignUp}
+                    error={this.state.error}
+                  />
+                );
+              }} />
             <Route
               path="/about"
               exact

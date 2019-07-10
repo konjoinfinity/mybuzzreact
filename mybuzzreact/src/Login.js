@@ -5,15 +5,15 @@ class Login extends Component {
         let errormessage;
         this.props.error &&
             (errormessage = (
-                <button className="btn btn-warning"> {this.props.error}</button>
+                <button className="btn yellow lighten-4"> {this.props.error}</button>
             ));
         return (
-            this.props.isLoggedIn === false && (
+            <div>
+                <h4 style={{ textAlign: "center" }}>Log In</h4>
+                {errormessage}
                 <div className="card m-5">
                     <div className="card-body">
                         <div className="card-content">
-                            <h2>Log In</h2>
-                            {errormessage}
                             <form>
                                 <div>
                                     <p>Email</p>
@@ -41,7 +41,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-            )
+            </div>
         );
     }
 }
