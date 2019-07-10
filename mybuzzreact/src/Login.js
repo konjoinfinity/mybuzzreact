@@ -5,15 +5,15 @@ class Login extends Component {
         let errormessage;
         this.props.error &&
             (errormessage = (
-                <button className="btn yellow lighten-4"> {this.props.error}</button>
+                <div className="btn yellow lighten-4" style={{ color: "black" }}> {this.props.error}</div>
             ));
         return (
-            <div>
-                <h4 style={{ textAlign: "center" }}>Log In</h4>
-                {errormessage}
-                <div className="card m-5">
-                    <div className="card-body">
-                        <div className="card-content">
+            <div className="row">
+                <div className="col s12 m6" style={{ margin: "10px" }}>
+                    <h4 style={{ textAlign: "center" }}>Log In</h4>
+                    {errormessage}
+                    <div className="card">
+                        <div className="input-field col s12">
                             <form>
                                 <div>
                                     <p>Email</p>
@@ -33,15 +33,17 @@ class Login extends Component {
                                             onChange={this.props.handleInput} />
                                     </p>
                                 </div>
-                                <button
-                                    className="btn waves-effect waves-light teal darken-1"
-                                    type="submit"
-                                    onClick={this.props.handleLogIn}>Log In</button>
+                                <div className="input-field col s12" style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                                    <button
+                                        className="btn waves-effect waves-light teal darken-1"
+                                        type="submit"
+                                        onClick={this.props.handleLogIn}>Log In</button>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }

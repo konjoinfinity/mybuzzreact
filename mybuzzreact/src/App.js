@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       email: "",
       password: "",
-      confirmpass: "",
+      confirmpassword: "",
       isLoggedIn: false,
       error: ""
     };
@@ -68,7 +68,7 @@ class App extends Component {
         password: this.state.password,
         confirmpassword: this.state.confirmpassword,
         gender: this.state.gender,
-        weight: this.state.gender
+        weight: this.state.weight
       })
       .then(response => {
         if (response.data.error) {
@@ -109,7 +109,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
         <main className="container">
           <Switch>
             <Route
