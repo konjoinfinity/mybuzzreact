@@ -65,7 +65,7 @@ class User extends Component {
                 this.setState({ user: res.data })
                 this.getUser();
             }).catch(err => console.log(err));
-        this.props.history.push(`/user/${this.props.match.params.id}`);
+        this.props.history.push("/");
     }
 
     deleteOldBuzz(buzzid) {
@@ -77,7 +77,7 @@ class User extends Component {
                 this.setState({ user: res.data })
                 this.getUser();
             }).catch(err => console.log(err));
-        this.props.history.push(`/user/${this.props.match.params.id}`);
+        this.props.history.push("/");
     }
 
     deleteAllBuzzes() {
@@ -87,7 +87,7 @@ class User extends Component {
             this.setState({ user: res.data })
             this.getUser();
         }).catch(err => console.log(err));
-        this.props.history.push(`/user/${this.props.match.params.id}`);
+        this.props.history.push("/");
     }
 
     deleteAllOldBuzzes() {
@@ -97,7 +97,7 @@ class User extends Component {
             this.setState({ user: res.data })
             this.getUser();
         }).catch(err => console.log(err));
-        this.props.history.push(`/user/${this.props.match.params.id}`);
+        this.props.history.push("/");
     }
 
     render() {
