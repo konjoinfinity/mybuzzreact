@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import './App.css';
 import Nav from "./Nav";
-import Home from "./Home"
 import User from "./User"
 import Signup from './Signup';
 import Login from './Login';
@@ -116,11 +115,13 @@ class App extends Component {
               path="/"
               exact
               render={props => (
-                <Home {...props} />
-              )}
-            />
+                <User
+                  {...props}
+                />
+              )} />
             <Route
               path="/login"
+              exact
               render={props => {
                 return (
                   <Login
@@ -134,6 +135,7 @@ class App extends Component {
               }} />
             <Route
               path="/signup"
+              exact
               render={props => {
                 return (
                   <Signup
@@ -150,14 +152,6 @@ class App extends Component {
               exact
               render={props => (
                 <About
-                  {...props}
-                />
-              )} />
-            <Route
-              path="/user/:id"
-              exact
-              render={props => (
-                <User
                   {...props}
                 />
               )} />
