@@ -57,7 +57,7 @@ class User extends Component {
     }
 
     deleteBuzz(buzzid) {
-        axios.put(devProdUrl + "del", {
+        axios.put(devProdUrl + "delete", {
             index: buzzid
         }, {
                 headers: { "user-token": `${localStorage.token}` }
@@ -69,7 +69,7 @@ class User extends Component {
     }
 
     deleteOldBuzz(buzzid) {
-        axios.put(devProdUrl + "olddel", {
+        axios.put(devProdUrl + "olddelete", {
             index: buzzid
         }, {
                 headers: { "user-token": `${localStorage.token}` }
@@ -81,7 +81,7 @@ class User extends Component {
     }
 
     deleteAllBuzzes() {
-        axios.put(devProdUrl + "delall", {}, {
+        axios.put(devProdUrl + "alldelete", {}, {
             headers: { "user-token": `${localStorage.token}` }
         }).then(res => {
             this.setState({ user: res.data })
@@ -91,7 +91,7 @@ class User extends Component {
     }
 
     deleteAllOldBuzzes() {
-        axios.put(devProdUrl + "olddelall", {}, {
+        axios.put(devProdUrl + "removeoldall", {}, {
             headers: { "user-token": `${localStorage.token}` }
         }).then(res => {
             this.setState({ user: res.data })
