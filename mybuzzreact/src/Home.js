@@ -13,10 +13,11 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        axios.get(devProdUrl)
-            .then(res => {
-                this.setState({ users: res.data });
-            }).catch(err => console.log(err));
+        axios.get(devProdUrl, {
+            headers: { "user-token": `${localStorage.token}` }
+        }).then(res => {
+            this.setState({ users: res.data });
+        }).catch(err => console.log(err));
     }
 
     render() {

@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 
 class Login extends Component {
     render() {
-        let errormessage;
-        this.props.error &&
-            (errormessage = (
-                <div className="btn yellow lighten-4" style={{ color: "black" }}> {this.props.error}</div>
-            ));
         return (
             <div className="row">
                 <div className="col s12 m6" style={{ margin: "10px" }}>
                     <h4 style={{ textAlign: "center" }}>Log In</h4>
-                    {errormessage}
                     <div className="card">
                         <div className="input-field col s12">
                             <form>

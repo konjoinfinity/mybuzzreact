@@ -21,14 +21,17 @@ class User extends Component {
     }
 
     componentDidMount() {
-        axios.get(devProdUrl + `user/${this.props.match.params.id}`)
-            .then(res => {
-                this.setState({ user: res.data })
-            }).catch(err => console.log(err));
+        axios.get(devProdUrl + `user/${this.props.match.params.id}`, {
+            headers: { "user-token": `${localStorage.token}` }
+        }).then(res => {
+            this.setState({ user: res.data })
+        }).catch(err => console.log(err));
     }
 
     getUser() {
-        axios.get(devProdUrl + `user/${this.props.match.params.id}`)
+        axios.get(devProdUrl + `user/${this.props.match.params.id}`, {
+            headers: { "user-token": `${localStorage.token}` }
+        })
             .then(res => {
                 this.setState({ user: res.data })
             }).catch(err => console.log(err));
@@ -37,13 +40,17 @@ class User extends Component {
     addDrink(drink) {
         axios.post(devProdUrl + `user/${this.props.match.params.id}`, {
             drinkType: drink
-        }).then(res => {
-            this.setState({ user: res.data })
-        }).catch(err => console.log(err));
+        }, {
+                headers: { "user-token": `${localStorage.token}` }
+            }).then(res => {
+                this.setState({ user: res.data })
+            }).catch(err => console.log(err));
     }
 
     checkBac() {
-        axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`)
+        axios.get(devProdUrl + `user/${this.props.match.params.id}/bac`, {
+            headers: { "user-token": `${localStorage.token}` }
+        })
             .then(res => {
                 this.setState({ user: res.data })
             }).catch(err => console.log(err));
@@ -52,25 +59,31 @@ class User extends Component {
     deleteBuzz(buzzid) {
         axios.put(devProdUrl + `user/${this.props.match.params.id}/del`, {
             index: buzzid
-        }).then(res => {
-            this.setState({ user: res.data })
-            this.getUser();
-        }).catch(err => console.log(err));
+        }, {
+                headers: { "user-token": `${localStorage.token}` }
+            }).then(res => {
+                this.setState({ user: res.data })
+                this.getUser();
+            }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteOldBuzz(buzzid) {
         axios.put(devProdUrl + `user/${this.props.match.params.id}/olddel`, {
             index: buzzid
-        }).then(res => {
-            this.setState({ user: res.data })
-            this.getUser();
-        }).catch(err => console.log(err));
+        }, {
+                headers: { "user-token": `${localStorage.token}` }
+            }).then(res => {
+                this.setState({ user: res.data })
+                this.getUser();
+            }).catch(err => console.log(err));
         this.props.history.push(`/user/${this.props.match.params.id}`);
     }
 
     deleteAllBuzzes() {
-        axios.put(devProdUrl + `user/${this.props.match.params.id}/delall`).then(res => {
+        axios.put(devProdUrl + `user/${this.props.match.params.id}/delall`, {}, {
+            headers: { "user-token": `${localStorage.token}` }
+        }).then(res => {
             this.setState({ user: res.data })
             this.getUser();
         }).catch(err => console.log(err));
@@ -78,7 +91,9 @@ class User extends Component {
     }
 
     deleteAllOldBuzzes() {
-        axios.put(devProdUrl + `user/${this.props.match.params.id}/olddelall`).then(res => {
+        axios.put(devProdUrl + `user/${this.props.match.params.id}/olddelall`, {}, {
+            headers: { "user-token": `${localStorage.token}` }
+        }).then(res => {
             this.setState({ user: res.data })
             this.getUser();
         }).catch(err => console.log(err));
