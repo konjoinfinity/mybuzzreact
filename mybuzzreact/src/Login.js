@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import FlashMessage from 'react-flash-message'
 
 class Login extends Component {
     render() {
+        if (this.props.error) {
+            var error = (
+                <FlashMessage duration={5000} persistOnHover={true}>
+                    <div style={{ background: "#f9bf00", borderRadius: "15px", textAlign: "center" }}>{this.props.error}</div>
+                </FlashMessage>)
+        }
         return (
             <div className="row">
                 <div className="col s12 m6" style={{ margin: "10px" }}>
                     <h4 style={{ textAlign: "center" }}>Log In</h4>
+                    {error}
                     <div className="card">
                         <div className="input-field col s12">
                             <form>
