@@ -146,37 +146,55 @@ class User extends Component {
             )
             )
         return (
-            <div>
+            <div style={this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 ? { background: "teal" } : null}>
                 <div className="container-card">
                     <div className="divcard teal lighten-5">
                         <h6>{this.state.user.username}</h6>
                         <p>Gender - {this.state.user.gender}</p>
                         <p>Weight - {this.state.user.weight} lbs.</p>
                         <h5>Current BAC</h5>
-                        {this.state.user.bac >= 0.04 && this.state.user.bac < 0.06 && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "yellow", color: "teal" }}>
+                        {(this.state.user.bac === 0 || this.state.user.bac === undefined) && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "white", color: "teal" }}>
+                                <h6 style={{ fontWeight: "bold" }}>0.0</h6>
+                            </div>)}
+                        {this.state.user.bac > 0.00 && this.state.user.bac < 0.01 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#b5d3a0", color: "white" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
-                        {this.state.user.bac >= 0.06 && this.state.user.bac < 0.08 && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "orange", color: "teal" }}>
+                        {this.state.user.bac > 0.01 && this.state.user.bac < 0.02 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#96c060", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac > 0.02 && this.state.user.bac < 0.03 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#9fc635", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.03 && this.state.user.bac < 0.04 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#d3e50e", color: "teal" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.04 && this.state.user.bac < 0.05 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#ffeb00", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#f9bf00", color: "teal" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.06 && this.state.user.bac < 0.07 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#e98f00", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.07 && this.state.user.bac < 0.08 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#d05900", color: "white" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
                         {this.state.user.bac >= 0.08 && (
                             <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#AE0000", color: "white" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
-                        {this.state.user.bac >= 0.02 && this.state.user.bac < 0.04 && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#2DB900", color: "white" }}>
-                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
-                            </div>)}
-                        {this.state.user.bac > 0.00 && this.state.user.bac < 0.02 && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "white", color: "teal" }}>
-                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
-                            </div>)}
-                        {(this.state.user.bac === 0 || this.state.user.bac === undefined) && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "white", color: "teal" }}>
-                                <h6 style={{ fontWeight: "bold" }}>0.0</h6>
-                            </div>)}
+                        {this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 && (
+                            <div><h6><span role="img" aria-label="optbuzzhand">👌🏻</span> Optimal Buzz! <span role="img" aria-label="optbuzzicon">😊</span></h6></div>)}
                         <button style={{ margin: "5px" }} onClick={() => this.checkBac()} className="btn waves-effect waves-light teal darken-1" type="submit" name="BAC">Calculate BAC<i className="material-icons right">send</i></button>
                     </div>
                     <div className="divcard teal lighten-5">
