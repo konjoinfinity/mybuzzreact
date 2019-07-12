@@ -13,6 +13,7 @@ class Nav extends Component {
             <a href="/" data-target="mobile-nav" className="sidenav-trigger">
               <i className="material-icons">menu</i></a>
             <ul className="left hide-on-med-and-down">
+              <li><Link to="/chart" className="sidenav-close">Chart</Link></li>
               {this.props.isLoggedIn === true && (
                 <li><Link to="/" className="sidenav-close">Home</Link></li>)}
               {this.props.isLoggedIn === true && (

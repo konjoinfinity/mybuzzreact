@@ -9,6 +9,7 @@ import Login from './Login';
 import About from './About';
 import devProdUrl from './Urls';
 import axios from "axios";
+import Graph from './Graph';
 
 class App extends Component {
   constructor(props) {
@@ -116,6 +117,14 @@ class App extends Component {
               exact
               render={props => (
                 <User
+                  {...props}
+                />
+              )} />
+            <Route
+              path="/chart"
+              exact
+              render={props => (
+                <Graph
                   {...props}
                 />
               )} />
