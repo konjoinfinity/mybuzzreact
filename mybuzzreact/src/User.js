@@ -174,7 +174,7 @@ class User extends Component {
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
                         {this.state.user.bac >= 0.04 && this.state.user.bac < 0.05 && (
-                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#ffeb00", color: "white" }}>
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#ffeb00", color: "teal" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
                         {this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 && (
