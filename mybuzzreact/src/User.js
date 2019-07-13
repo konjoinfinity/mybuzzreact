@@ -149,7 +149,7 @@ class User extends Component {
             <div style={this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 ? { background: "teal" } : null}>
                 <div className="container-card">
                     <div className="divcard teal lighten-5">
-                        <h6>{this.state.user.username}</h6>
+                        <h6>{this.state.user.email}</h6>
                         <p>Gender - {this.state.user.gender}</p>
                         <p>Weight - {this.state.user.weight} lbs.</p>
                         <h5>Current BAC</h5>
