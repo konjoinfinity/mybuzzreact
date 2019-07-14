@@ -189,8 +189,16 @@ class User extends Component {
                             <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#d05900", color: "white" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
-                        {this.state.user.bac >= 0.08 && (
+                        {this.state.user.bac >= 0.08 && this.state.user.bac < 0.09 && (
                             <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#AE0000", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.09 && this.state.user.bac < 0.10 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#571405", color: "white" }}>
+                                <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
+                            </div>)}
+                        {this.state.user.bac >= 0.10 && (
+                            <div style={{ borderRadius: "15px", border: "solid teal 2px", padding: "10px", background: "#000000", color: "white" }}>
                                 <h6 style={{ fontWeight: "bold" }}>{this.state.user.bac}</h6>
                             </div>)}
                         {this.state.user.bac >= 0.05 && this.state.user.bac < 0.06 && (
